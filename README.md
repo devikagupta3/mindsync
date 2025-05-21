@@ -31,7 +31,7 @@ It allows users to complete interactive questionnaires and provides mental healt
 
 Run the app locally with:
 
-bash
+bash - 
 python app.py
 
 
