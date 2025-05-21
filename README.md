@@ -1,4 +1,4 @@
-markdown
+
 # MindSync
 
 MindSync is an AI-powered Mental Health Assessment web application built with Flask.  
@@ -14,22 +14,23 @@ It allows users to complete interactive questionnaires and provides mental healt
 ## Installation
 
 1. Clone the repository:
-bash
+   bash
 
-git clone https://github.com/devikagupta3/mindsync.git
-cd mindsync
+   git clone https://github.com/devikagupta3/mindsync.git
+   cd mindsync
 
 
 3. Install dependencies:
 
-bash
+   bash
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
    
 
 ## Usage
 
 Run the app locally with:
+
 bash
 python app.py
 
