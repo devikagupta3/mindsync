@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anxiety demographics | MindSync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="default-bg">
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 75%"></div>
+        </div>
+        
+        <h1>Anxiety demographics (GAD-7)</h1>
+        <p class="subtitle">Over the last 2 weeks, how often have you been bothered by:</p>
+        
+        <form method="POST" class="demographics-form">
+            {% set questions = [
+                ("Feeling nervous, anxious, or on edge", "gad1"),
+                ("Not being able to stop or control worrying", "gad2"),
+                ("Worrying too much about different things", "gad3"),
+                ("Trouble relaxing", "gad4"),
+                ("Being so restless that it's hard to sit still", "gad5"),
+                ("Becoming easily annoyed or irritable", "gad6"),
+                ("Feeling afraid as if something awful might happen", "gad7")
+            ] %}
+            
+            {% for question, name in questions %}
+            <div class="question-card">
+                <p class="question-text">{{ question }}</p>
+                <div class="options">
+                    {% for value, text in [
+                        (0, "Not at all"), 
+                        (1, "Several days"), 
+                        (2, "More than half the days"), 
+                        (3, "Nearly every day")
+                    ] %}
+                    <label class="option">
+                        <input type="radio" name="{{ name }}" value="{{ value }}" required>
+                        <span class="option-text">{{ text }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="form-navigation">
+                <a href="{{ url_for('phq9') }}" class="btn btn-back">Back</a>
+                <button type="submit" class="btn">Continue to Lifestyle Questions</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

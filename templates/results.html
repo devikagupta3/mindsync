@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results | MindSync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set dynamic background based on prediction
+            const prediction = "{{ prediction.lower() }}";
+            document.body.className = prediction ? prediction + '-bg' : 'default-bg';
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="results-header">
+            <h1>Your Mental Health Assessment</h1>
+            <p class="subtitle">Here's what your responses tell us</p>
+        </div>
+        
+        <div class="results-grid">
+            <!-- PHQ-9 Results -->
+            <div class="result-card phq9-card">
+                <h2>Depression (PHQ-9)</h2>
+                <div class="score-display phq9-{{ phq9_level.lower().replace(' ', '-') }}">
+                    <span class="score">{{ phq9_score }}</span>
+                    <span class="level">{{ phq9_level }}</span>
+                </div>
+                <div class="interpretation">
+                    {% if phq9_level == "Minimal" %}
+                    <p>Your responses suggest minimal symptoms of depression.</p>
+                    {% elif phq9_level == "Mild" %}
+                    <p>You're showing mild symptoms that may benefit from self-care.</p>
+                    {% elif phq9_level == "Moderate" %}
+                    <p>Moderate symptoms detected. Consider speaking with a professional.</p>
+                    {% elif phq9_level == "Moderately severe" %}
+                    <p>Your symptoms are moderately severe. Professional help is recommended.</p>
+                    {% else %}
+                    <p>Your symptoms are severe. Please seek professional support.</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- GAD-7 Results -->
+            <div class="result-card gad7-card">
+                <h2>Anxiety (GAD-7)</h2>
+                <div class="score-display gad7-{{ gad7_level.lower().replace(' ', '-') }}">
+                    <span class="score">{{ gad7_score }}</span>
+                    <span class="level">{{ gad7_level }}</span>
+                </div>
+                <div class="interpretation">
+                    {% if gad7_level == "Minimal" %}
+                    <p>Your responses suggest minimal symptoms of anxiety.</p>
+                    {% elif gad7_level == "Mild" %}
+                    <p>You're showing mild anxiety symptoms.</p>
+                    {% elif gad7_level == "Moderate" %}
+                    <p>Moderate anxiety detected. Consider support options.</p>
+                    {% else %}
+                    <p>Severe anxiety symptoms. Professional help is recommended.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Overall Prediction -->
+        <div class="overall-result {{ prediction.lower() }}">
+            <h2>Overall Mental Health Status</h2>
+            <div class="prediction-bubble">
+                {{ prediction }}
+            </div>
+            <div class="recommendation">
+                {% if prediction.lower() == 'excellent' %}
+                <p>Your mental health appears to be in excellent condition!</p>
+                {% elif prediction.lower() == 'good' %}
+                <p>Your mental health is generally good with some areas to monitor.</p>
+                {% elif prediction.lower() == 'fair' %}
+                <p>Your results suggest some concerns that may benefit from attention.</p>
+                {% else %}
+                <p>Your results indicate significant concerns. Please consider seeking support.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Resources -->
+        <div class="resources">
+            <h3>Helpful Resources</h3>
+            <div class="resource-links">
+                <a href="#" class="resource-link">Find a Therapist</a>
+                <a href="#" class="resource-link">Crisis Hotlines</a>
+                <a href="#" class="resource-link">Self-Help Tools</a>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="{{ url_for('welcome') }}" class="btn">Return Home</a>
+        </div>
+    </div>
+</body>
+</html>

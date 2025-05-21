@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lifestyle Factors | MindSync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .slider-container {
+            margin-bottom: 1.5rem;
+        }
+        .slider-value {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 80%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="default-bg">
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 100%"></div>
+        </div>
+        
+        <h1>Your Lifestyle Factors</h1>
+        <p class="subtitle">These help us understand your daily habits and environment</p>
+        
+        <form method="POST" class="assessment-form">
+            <div class="form-grid">
+                <!-- Sleep -->
+                <div class="form-group">
+                    <label for="sleep_quality">Average hours of sleep per night:</label>
+                    <input type="number" id="sleep_quality" name="sleep_quality" min="0" max="12" step="0.5" value="7" required>
+                </div>
+                
+                <!-- Exercise -->
+                <div class="form-group">
+                    <label for="exercise_frequency">Days of exercise per week (30+ mins):</label>
+                    <input type="number" id="exercise_frequency" name="exercise_frequency" min="0" max="7" value="3" required>
+                </div>
+                
+                <!-- Screen Time -->
+                <div class="form-group">
+                    <label for="screen_time">Daily screen time (hours):</label>
+                    <input type="number" id="screen_time" name="screen_time" min="0" max="24" step="0.5" value="5" required>
+                </div>
+                
+                <!-- Social Support -->
+                <div class="form-group slider-container">
+                    <label for="social_support">Social support (1-10 scale):</label>
+                    <div>
+                        <input type="range" id="social_support" name="social_support" min="1" max="10" value="6" 
+                               oninput="document.getElementById('social_support_value').textContent = this.value" required>
+                        <span class="slider-value" id="social_support_value">6</span>
+                    </div>
+                    <div class="range-labels">
+                        <span>1 (Isolated)</span>
+                        <span>10 (Very Supported)</span>
+                    </div>
+                </div>
+                
+                <!-- Stress -->
+                <div class="form-group slider-container">
+                    <label for="stress_score">Perceived stress level (1-10):</label>
+                    <div>
+                        <input type="range" id="stress_score" name="stress_score" min="1" max="10" value="5"
+                               oninput="document.getElementById('stress_score_value').textContent = this.value" required>
+                        <span class="slider-value" id="stress_score_value">5</span>
+                    </div>
+                    <div class="range-labels">
+                        <span>1 (No Stress)</span>
+                        <span>10 (Extreme Stress)</span>
+                    </div>
+                </div>
+                
+                <!-- Work-Life Balance -->
+                <div class="form-group">
+                    <label for="work_balance">Work-life balance:</label>
+                    <select id="work_balance" name="work_balance" required>
+                        <option value="1">1 - Very Poor</option>
+                        <option value="2">2 - Poor</option>
+                        <option value="3" selected>3 - Neutral</option>
+                        <option value="4">4 - Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-navigation">
+                <a href="{{ url_for('gad7') }}" class="btn btn-back">Back</a>
+                <button type="submit" class="btn">See My Results</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Initialize slider values on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('social_support_value').textContent = 
+                document.getElementById('social_support').value;
+            document.getElementById('stress_score_value').textContent = 
+                document.getElementById('stress_score').value;
+        });
+    </script>
+</body>
+</html>

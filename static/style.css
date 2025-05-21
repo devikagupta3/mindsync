@@ -1,0 +1,606 @@
+:root {
+  /* Emotional Color Palette */
+  --excellent: #f8f0af;  /* Yellow */
+  --good: #edc385;       /* Orange */
+  --fair: #96c9f2;       /* Blue */
+  --poor: #f9b1b9;       /* Red */
+  --primary: #7E57C2;    /* Purple */
+  --primary-dark: #542da3;
+  --text-dark: #424242;
+  --text-light: #dfd7d7;
+}
+
+/* Doodle Background */
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--text-dark);
+  background-color: var(--fair); /* Default */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C27B0' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  transition: all 0.5s ease;
+}
+
+/* Dynamic Backgrounds */
+body.excellent-bg {
+  background-color: var(--excellent);
+  background-image: url("data:image/svg+xml,%3Csvg..."), 
+                    linear-gradient(135deg, var(--excellent) 0%, #FFFDE7 100%);
+}
+
+body.good-bg {
+  background-color: var(--good);
+  background-image: url("data:image/svg+xml,%3Csvg..."), 
+                    linear-gradient(135deg, var(--good) 0%, #FFF3E0 100%);
+}
+
+body.fair-bg {
+  background-color: var(--fair);
+  background-image: url("data:image/svg+xml,%3Csvg..."), 
+                    linear-gradient(135deg, var(--fair) 0%, #E3F2FD 100%);
+}
+
+body.poor-bg {
+  background-color: var(--poor);
+  background-image: url("data:image/svg+xml,%3Csvg..."), 
+                    linear-gradient(135deg, var(--poor) 0%, #FFEBEE 100%);
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: rgba(254, 217, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Form Elements - Consistent Sizing */
+.form-group {
+  margin-bottom: 1.8\rem;
+}
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  max-width: 300px; /* Consistent maximum width */
+  padding: 1rem;
+  border: 2px solid #d6cbcb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  display: block; /* Ensure consistent layout */
+}
+
+/* Specific styling for age and gender inputs */
+#age, #gender {
+  width: 100%;
+  max-width: 300px; /* Matching fixed width */
+}
+
+/* Gender select styling */
+#gender {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+/* Emotional Color Coding for Results */
+/* PHQ-9 Scores */
+.phq9-minimal { background-color: var(--excellent); border-left: 5px solid #FBC02D; }
+.phq9-mild { background-color: var(--good); border-left: 5px solid #FFA000; }
+.phq9-moderate { background-color: var(--fair); border-left: 5px solid #1976D2; }
+.phq9-moderately-severe { background-color: #FFCC80; border-left: 5px solid #F57C00; }
+.phq9-severe { background-color: var(--poor); border-left: 5px solid #D32F2F; }
+
+/* GAD-7 Scores */
+.gad7-minimal { background-color: var(--excellent); border-left: 5px solid #FBC02D; }
+.gad7-mild { background-color: var(--good); border-left: 5px solid #FFA000; }
+.gad7-moderate { background-color: var(--fair); border-left: 5px solid #1976D2; }
+.gad7-severe { background-color: var(--poor); border-left: 5px solid #D32F2F; }
+
+/* Overall Prediction */
+.prediction.excellent { background-color: var(--excellent); border-left: 5px solid #FBC02D; }
+.prediction.good { background-color: var(--good); border-left: 5px solid #FFA000; }
+.prediction.fair { background-color: var(--fair); border-left: 5px solid #1976D2; }
+.prediction.poor { background-color: var(--poor); border-left: 5px solid #D32F2F; }
+
+/* Doodle Elements */
+.doodle-spot {
+  position: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.doodle-1 {
+  top: 10%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+
+.doodle-2 {
+  bottom: 15%;
+  right: 5%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--primary-dark) 0%, transparent 70%);
+}
+
+/* Rest of your existing styles... */
+/* [Previous CSS content remains unchanged below this point] */
+:root {
+  /* Pastel Color Palette */
+  --pastel-mint: #a5e5ec;
+  --pastel-lavender: #d1b3f0;
+  --pastel-peach: #f3b7ad;
+  --pastel-blue: #a5ccfa;
+  --pastel-green: #b2fbc9;
+  --pastel-yellow: #fff1ac;
+  --pastel-pink: #f7b5ba;
+  --text-dark: #454040;
+  --text-light: #e0e0e0;
+  --primary: #9d8feb;
+  --primary-dark: #7161dc;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: background-color 0.5s ease, color 0.3s ease;
+  color: var(--text-dark);
+  background-color: var(--pastel-mint);
+}
+
+/* Dynamic Backgrounds */
+body.excellent-bg {
+  background-color: var(--pastel-green);
+  background-image: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-blue) 100%);
+}
+
+body.good-bg {
+  background-color: var(--pastel-blue);
+  background-image: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-mint) 100%);
+}
+
+body.fair-bg {
+  background-color: var(--pastel-yellow);
+  background-image: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-peach) 100%);
+}
+
+body.poor-bg {
+  background-color: var(--pastel-peach);
+  background-image: linear-gradient(135deg, var(--pastel-peach) 0%, var(--pastel-pink) 100%);
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Typography */
+h1, h2, h3 {
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(138, 127, 204, 0.3);
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 127, 204, 0.4);
+}
+
+.btn-back {
+  background: #b0bec5;
+  box-shadow: 0 4px 15px rgba(176, 190, 197, 0.3);
+}
+
+.btn-back:hover {
+  background: #90a4ae;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+input, select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #f1d6c9;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 162, 0.915);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(138, 127, 204, 0.2);
+}
+
+/* Question Cards */
+.question-card {
+  background: white;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-3px);
+}
+
+.question-text {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #eee;
+}
+
+.option:hover {
+  background-color: #f5f5f5;
+}
+
+.option input {
+  width: auto;
+  margin-right: 0.8rem;
+}
+
+/* Sliders */
+.slider-container {
+  margin-bottom: 2rem;
+}
+
+.slider-value {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  margin-left: 15px;
+  font-weight: bold;
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 10px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  outline: none;
+  vertical-align: middle;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/* Results Section */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.result-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.score-display {
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: white;
+  margin: 1.5rem 0;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+  font-size: 3rem;
+  font-weight: 800;
+  display: block;
+  line-height: 1;
+}
+
+.level {
+  font-size: 1.3rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* PHQ-9 Score Colors */
+.phq9-minimal { background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%); }
+.phq9-mild { background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%); }
+.phq9-moderate { background: linear-gradient(135deg, #ffee58 0%, #fff176 100%); color: #333; }
+.phq9-moderately-severe { background: linear-gradient(135deg, #ffa726 0%, #ffb74d 100%); }
+.phq9-severe { background: linear-gradient(135deg, #ef5350 0%, #e57373 100%); }
+
+/* GAD-7 Score Colors */
+.gad7-minimal { background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%); }
+.gad7-mild { background: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%); }
+.gad7-moderate { background: linear-gradient(135deg, #ffee58 0%, #fff176 100%); color: #333; }
+.gad7-severe { background: linear-gradient(135deg, #ef5350 0%, #e57373 100%); }
+
+/* Overall Prediction */
+.overall-result {
+  text-align: center;
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  border-radius: 15px;
+  background: rgb(255, 254, 254);
+  box-shadow: 1 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prediction-bubble {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgb(255, 225, 225);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  margin: 1rem 0;
+  box-shadow: 0 10px 25px rgba(138, 127, 204, 0.4);
+  text-transform: capitalize;
+}
+
+.recommendation {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 15px;
+
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .options {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+/* Form Input Sizing */
+/* Form Input Styling */
+.form-group input,
+.form-group select {
+  width: 100%;
+  max-width: 900px; /* Increased length */
+  min-width: 800px;
+  padding: 1.1rem;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  border: 0.2px solid rgba(251, 106, 108, 0.801);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 233, 233, 0.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: block;
+  margin: 0.5rem auto 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Dynamic Background Shading Based on Page */
+body.excellent-bg .form-group input,
+body.excellent-bg .form-group select {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(255, 249, 196, 0.3);
+}
+
+body.good-bg .form-group input,
+body.good-bg .form-group select {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(255, 224, 178, 0.3);
+}
+
+body.fair-bg .form-group input,
+body.fair-bg .form-group select {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(187, 222, 251, 0.3);
+}
+
+body.poor-bg .form-group input,
+body.poor-bg .form-group select {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(255, 205, 210, 0.3);
+}
+
+/* Select Dropdown Specific Styling */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238a7fcc' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 0.8em;
+  padding-right: 3rem;
+}
+
+/* Focus States */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(138, 127, 204, 0.2),
+              0 4px 12px rgba(138, 127, 204, 0.15);
+  background-color: white;
+}
+
+/* Custom container background for demographics page */
+
+/*body .demographics-container {
+  max-width: 700px;
+  padding: 2rem;
+  background-color: rgba(236, 215, 245, 0.92); 
+  backdrop-filter: blur(8px); 
+  border: 0.2px solid rgba(251, 106, 108, 0.801);
+  box-shadow: 0 8px 32px rgba(149, 117, 205, 0.15); 
+  position: relative; 
+  overflow: hidden; 
+
+}/*
+
+/* Optional: Add a soft gradient overlay */
+body .demographics-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 221, 228, 0.3) 0%, /* Pastel mint */
+    rgba(189, 152, 226, 0.2) 100% /* Pastel lavender */
+  );
+  z-index: -1;
+}
+.demographics-container .form-group input,
+.demographics-container .form-group select {
+  max-width: 650px; /* Fits perfectly in 580px container */
+  min-width: 550px;
+  background-color: rgba(255, 255, 255, 0.85); /* Slightly opaque white */
+  border: 1px solid rgba(189, 152, 226, 0.3); /* Matches your lavender */
+}
+
+/* Focus states that match your color scheme */
+.demographics-container .form-group input:focus,
+.demographics-container .form-group select:focus {
+  border-color: rgba(251, 106, 108, 0.8); /* Your coral color */
+  box-shadow: 0 0 0 3px rgba(251, 106, 108, 0.2);
+}

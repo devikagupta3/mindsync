@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Depression demographics | MindSync</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="default-bg">
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 50%"></div>
+        </div>
+        
+        <h1>Depression demographics (PHQ-9)</h1>
+        <p class="subtitle">Over the last 2 weeks, how often have you been bothered by:</p>
+        
+        <form method="POST" class="demographics-form">
+            {% set questions = [
+                ("Little interest or pleasure in doing things", "phq1"),
+                ("Feeling down, depressed, or hopeless", "phq2"),
+                ("Trouble falling/staying asleep or sleeping too much", "phq3"),
+                ("Feeling tired or having little energy", "phq4"),
+                ("Poor appetite or overeating", "phq5"),
+                ("Feeling bad about yourself", "phq6"),
+                ("Trouble concentrating", "phq7"),
+                ("Moving/speaking slowly or being fidgety/restless", "phq8"),
+                ("Thoughts of self-harm", "phq9")
+            ] %}
+            
+            {% for question, name in questions %}
+            <div class="question-card">
+                <p class="question-text">{{ question }}</p>
+                <div class="options">
+                    {% for value, text in [
+                        (0, "Not at all"), 
+                        (1, "Several days"), 
+                        (2, "More than half the days"), 
+                        (3, "Nearly every day")
+                    ] %}
+                    <label class="option">
+                        <input type="radio" name="{{ name }}" value="{{ value }}" required>
+                        <span class="option-text">{{ text }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="form-navigation">
+                <a href="{{ url_for('demographics') }}" class="btn btn-back">Back</a>
+                <button type="submit" class="btn">Continue to Anxiety demographics</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
